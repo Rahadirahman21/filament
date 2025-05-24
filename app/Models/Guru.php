@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Setting extends Model
+class Guru extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_sekolah',
-        'nama_kepsek',
-        'visi',
-        'misi',
+        'nip',
+        'nama',
         'alamat',
-        'sejarah',
+        'jenis_kelamin',
+        'no_hp',
         'foto',
     ];
 }

@@ -2,13 +2,12 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SiswaResource\Pages;
-use App\Filament\Resources\SiswaResource\RelationManagers;
-use App\Models\Siswa;
+use App\Filament\Resources\GuruResource\Pages;
+use App\Filament\Resources\GuruResource\RelationManagers;
+use App\Models\Guru;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Radio;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,32 +18,19 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-
-class SiswaResource extends Resource
+class GuruResource extends Resource
 {
-    protected static ?string $model = Siswa::class;
+    protected static ?string $model = Guru::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-                FileUpload::make('foto')->required(),
-                TextInput::make('nis')->required()->integer()->unique(ignorable: fn($record)=> $record),
+            ->schema([
+                FileUpload::make('foto')->required(),  
+              TextInput::make('nip')->required()->integer()->unique(ignorable: fn($record)=> $record),
                 TextInput::make('nama')->required(),
-                Select::make('kelas')->required()->options([
-                    'X' => 'X',
-                    'XI' => 'XI',
-                    'XII' => 'XII',
-                ]),
-                Select::make('jurusan')->required()->options([
-                    'TBSM' => 'TBSM' ,
-                    'TJKT' => 'TJKT',
-                    'PPLG' => 'PPLG',
-                    'DKV' => 'DKV',
-                    'TOI' => 'TOI',
-                ]),
                 TextInput::make('alamat')->required(),
                 Radio::make('jenis_kelamin')->required()->options([
                     'L' => 'Laki - laki' ,
@@ -59,24 +45,15 @@ class SiswaResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('foto')->visibility('public')->circular(),
-                TextColumn::make('nis')->searchable(),
+                TextColumn::make('nip')->searchable(),
                 TextColumn::make('nama')->searchable(),
-                TextColumn::make('kelas'),
-                TextColumn::make('jurusan'),
                 TextColumn::make('alamat'),
-                TextColumn::make('jenis_kelamin'),
                 TextColumn::make('no_hp'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\action::make('show')
-                ->label('Show')
-                ->icon('heroicon-m-eye')
-                ->color('info')
-                ->url(fn($record)=>route('filament.admin.resources.siswas.show',$record->id))
-                ,
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -97,10 +74,9 @@ class SiswaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'show' => Pages\DetailSiswa::route('/{record}/show'),
-            'index' => Pages\ListSiswas::route('/'),
-            'create' => Pages\CreateSiswa::route('/create'),
-            'edit' => Pages\EditSiswa::route('/{record}/edit'),
+            'index' => Pages\ListGurus::route('/'),
+            'create' => Pages\CreateGuru::route('/create'),
+            'edit' => Pages\EditGuru::route('/{record}/edit'),
         ];
     }
 }

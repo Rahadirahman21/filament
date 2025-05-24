@@ -2,12 +2,11 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SettingResource\Pages;
-use App\Filament\Resources\SettingResource\RelationManagers;
-use App\Models\Setting;
+use App\Filament\Resources\EskulResource\Pages;
+use App\Filament\Resources\EskulResource\RelationManagers;
+use App\Models\Eskul;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,9 +17,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SettingResource extends Resource
+class EskulResource extends Resource
 {
-    protected static ?string $model = Setting::class;
+    protected static ?string $model = Eskul::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,13 +27,9 @@ class SettingResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('nama_sekolah')->required(),
-                TextInput::make('nama_kepsek')->required(),
-                TextInput::make('visi')->required(),
-                Textarea::make('misi')->required(),
-                TextInput::make('alamat')->required(),
-                Textarea::make('sejarah')->required(),
-                FileUpload::make('foto')->required(),
+                FileUpload::make('foto')->required(),  
+                TextInput::make('nama_eskul')->required(),
+                TextInput::make('jadwal')->required(),
             ]);
     }
 
@@ -42,13 +37,9 @@ class SettingResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('foto')->visibility('public')->circular(),
-                TextColumn::make('nama_sekolah')->searchable(),
-                TextColumn::make('nama_kepsek')->searchable(),
-                TextColumn::make('alamat'),
-                TextColumn::make('visi'),
-                TextColumn::make('misi'),
-                TextColumn::make('sejarah'),
+                 ImageColumn::make('foto')->visibility('public')->circular(),
+                TextColumn::make('nama_eskul')->searchable(),
+                TextColumn::make('jadwal')->searchable(),
             ])
             ->filters([
                 //
@@ -74,9 +65,9 @@ class SettingResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSettings::route('/'),
-            'create' => Pages\CreateSetting::route('/create'),
-            'edit' => Pages\EditSetting::route('/{record}/edit'),
+            'index' => Pages\ListEskuls::route('/'),
+            'create' => Pages\CreateEskul::route('/create'),
+            'edit' => Pages\EditEskul::route('/{record}/edit'),
         ];
     }
 }
