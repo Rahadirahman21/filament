@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SiswaResource\Pages;
 use App\Filament\Resources\SiswaResource\RelationManagers;
+use App\Models\Jurusan;
 use App\Models\Siswa;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
@@ -38,13 +39,7 @@ class SiswaResource extends Resource
                     'XI' => 'XI',
                     'XII' => 'XII',
                 ]),
-                Select::make('jurusan')->required()->options([
-                    'TBSM' => 'TBSM' ,
-                    'TJKT' => 'TJKT',
-                    'PPLG' => 'PPLG',
-                    'DKV' => 'DKV',
-                    'TOI' => 'TOI',
-                ]),
+                Select::make('id_jurusan')->required()->options(Jurusan::all()->pluck('nama_jurusan', 'id'))->label('Jurusan'),
                 TextInput::make('alamat')->required(),
                 Radio::make('jenis_kelamin')->required()->options([
                     'L' => 'Laki - laki' ,
@@ -62,8 +57,7 @@ class SiswaResource extends Resource
                 TextColumn::make('nis')->searchable(),
                 TextColumn::make('nama')->searchable(),
                 TextColumn::make('kelas'),
-                TextColumn::make('jurusan'),
-                TextColumn::make('alamat'),
+                TextColumn::make('id_jurusan')->formatStateUsing(fn($state)=> Jurusan::find($state)->nama_jurusan)->label('Jurusan'),
                 TextColumn::make('jenis_kelamin'),
                 TextColumn::make('no_hp'),
             ])

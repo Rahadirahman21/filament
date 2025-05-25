@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profil</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -25,7 +25,7 @@
         <ul class="flex items-center space-x-8">
           <li><a href="{{ route('home') }}" class="text-white">Home</a></li>
           <li><a href="{{ route('profil') }}" class="text-white">Profil</a></li>
-          <li><a href="{{ route('sarana') }}" class="text-white">Sarpras</a></li>
+        <li><a href="{{ route('sarana') }}" class="text-white">Sarpras</a></li>
           <li><a href="{{ route('siswa') }}" class="text-white">Siswa</a></li>
           <li><a href="{{ route('jurusan') }}" class="text-white">Kompetensi Keahlian</a></li>
         </ul>
@@ -50,14 +50,10 @@
     
   </nav>
 </header>
-@foreach ($data as $d)
-<h1 class="">Sejarah {{ $d->nama_sekolah }} </h1>
-<h1>{{ $d->sejarah }}</h1>
-<h1>Visi</h1>
-<h1>{{ $d->visi }} </h1>
-<h1>Misi</h1>
-<h1>{{ $d->misi }} </h1>
-@endforeach
-
+    @foreach ($data as $d)
+        <h1>{{ $d->misi }}</h1>
+    @endforeach
+    <h1> </h1>
+<h1>dasdas</h1>
 </body>
 </html>
