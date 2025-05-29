@@ -51,12 +51,24 @@
   </nav>
 </header>
 @foreach ($data as $d)
-<h1 class="">Sejarah {{ $d->nama_sekolah }} </h1>
-<h1>{{ $d->sejarah }}</h1>
-<h1>Visi</h1>
-<h1>{{ $d->visi }} </h1>
-<h1>Misi</h1>
-<h1>{{ $d->misi }} </h1>
+<h1 class="text-2xl font-bold text-center my-5">Sejarah {{ $d->nama_sekolah }} </h1>
+<div class="card w-full bg-base-100 card-lg shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">{{ $d->sejarah }}</h2>
+  </div>
+</div>
+<div class="card w-full bg-base-100 card-lg shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Visi</h2>
+    <h1>{{ $d->visi }} </h1>
+  </div>
+</div>
+<div class="card w-full bg-base-100 card-lg shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Misi</h2>
+    <h1>{{ $d->misi }} </h1>
+  </div>
+</div>
 @endforeach
 
 </body>

@@ -31,7 +31,7 @@ class JurusanResource extends Resource
                 TextInput::make('nama_jurusan')->required(),
                 TextInput::make('nama_kaprog')->required(),
                 TextInput::make('nama_kabeng')->required(),
-                // TextInput::make('ruangan')->required(),
+                TextInput::make('pengertian')->required(),
                 // TextInput::make('no_hp')->required(),
             ]);
     }
@@ -44,7 +44,7 @@ class JurusanResource extends Resource
                 TextColumn::make('nama_jurusan')->searchable(),
                 TextColumn::make('nama_kaprog')->searchable(),
                 TextColumn::make('nama_kabeng')->searchable(),
-                // TextColumn::make('ruangan'),
+                TextColumn::make('pengertian')->limit('50'),
                 // TextColumn::make('no_hp'),
             ])
             ->filters([

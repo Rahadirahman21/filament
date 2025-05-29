@@ -50,10 +50,30 @@
     
   </nav>
 </header>
-    @foreach ($data as $d)
-        <h1>{{ $d->misi }}</h1>
+<div class="flex w-full">
+<div class="left w-1/2">
+<h1>askdakjsgdkja</h1>
+</div>
+<div class="right w-1/2">
+  <div class="card w-full card-side bg-base-100 shadow-sm">
+  @foreach ($datas as $d) 
+  <figure>
+    <img
+    src="{{ asset('storage/' . $d->foto) }}"
+    alt="Movie" class="w-40"/>
+  </figure>
+  @endforeach
+  @foreach ($data as $d) 
+  <div class="card-body">
+    <h2 class="card-title">Sambutan Kepala Sekolah</h2>
+    <h1>{{ $d->nama_kepsek }}</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, explicabo ipsa! Ipsa harum repellat incidunt consequatur laboriosam quae commodi dignissimos quod labore repudiandae iusto esse unde fuga magnam, quis quas.</p>
+      
+    </div>
     @endforeach
-    <h1> </h1>
-<h1>dasdas</h1>
+</div>
+</div>
+</div>
+     
 </body>
 </html>

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import .meta.resolve.apply.S 
 
 export default defineConfig({
     plugins: [

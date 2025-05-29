@@ -16,6 +16,7 @@ class Jurusan extends Model
         'nama_kabeng',
         'ruangan',
         'foto',
+        'pengertian',
     ];
     public function siswa(): BelongsTo
     {

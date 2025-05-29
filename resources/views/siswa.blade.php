@@ -51,9 +51,7 @@
   </nav>
 </header>
     @foreach ($data as $d)
-        <h1>{{ $d->misi }}</h1>
     @endforeach
-    <h1> </h1>
-<h1>dasdas</h1>
+    
 </body>
 </html>

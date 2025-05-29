@@ -14,9 +14,10 @@ class UserController extends Controller
 {
     public function index(){
         $data = Setting::latest()->get();
+        $datas = Guru::latest()->get();
         $siswaCount = Siswa::count();
         $guruCount = Guru::count();
-        return view('home',compact('data','siswaCount','guruCount'));
+        return view('home',compact('data','siswaCount','guruCount','datas'));
     }
     public function profilIndex(){
         $data = Setting::latest()->get();
